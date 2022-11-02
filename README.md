@@ -93,14 +93,14 @@ When this is done, run `docker-compose down` to stop the test environment!
 This testsuite is using a custom loader for loading clients and providers. The custom loader has been implemented in **src** directory.
 
 The class implementing the loader is configured here:
-- file: `./apitest/docker/loginbuddy.properties`
+- file: `./docker-test/loginbuddy.properties`
 - property: `config.loginbuddy.loader.default`
 
 ## Configure SOAPUI
 
 All SOAPUI projects are using properties instead of hard coded values. These can be found here:
 
-```$ ./apitest/soapui/properties/template.properties```
+```$ ./soapui/properties/template.properties```
 
 If you want to use your own properties, simply copy that file and load them into SOAPUI for each project.
 

@@ -1,11 +1,11 @@
 package net.loginbuddy.test;
 
-import net.loginbuddy.common.util.Jwt;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import net.loginbuddy.common.util.Jwt;
+
 import java.io.IOException;
 
 public class SOAPUIHelper extends HttpServlet {

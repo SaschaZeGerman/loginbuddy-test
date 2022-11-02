@@ -1,6 +1,5 @@
 package net.loginbuddy.config.loginbuddy;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import net.loginbuddy.config.loginbuddy.common.Meta;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +8,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
