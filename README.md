@@ -1,28 +1,78 @@
-# Loginbuddy Test
+# Loginbuddy-Test
 
-This project is for testing Loginbuddy. It implements API tests that are executed using SOAPUI.
+This project is for testing [Loginbuddy](https://github.com/SaschaZeGerman/loginbuddy).
 
-# Running API tests for Loginbuddy
+## Pre-Requisites
 
-This project SOAPUI for testing APIs. I got stuck with SOAPUI for many years and, although the name may not indicate it, it is good at testing REST APIs, too.
+### Tooling
+
+All Loginbuddy projects (including this one) use these tools and technologies:
+
+- Docker
+- Make
+- Maven
+- Java11
+
+Before you continue, please verify that those tools are available!
+
+This project uses SOAPUI for testing APIs. I got stuck with SOAPUI for many years and, although the name may not indicate it, it is good at testing REST APIs, too.
 
 SOAPUI (Open Source) can be downloaded [here](https://www.soapui.org/downloads/soapui.html).
 
-To run the tests a few pre-requisites are required:
+### Dependencies
+
+The project depends on sources of Loginbuddy and Loginbuddy-Samples. Please clone and build them:
+
+**Loginbuddy**
+
+- `git clone https://github.com/SaschaZeGerman/loginbuddy.git`
+- `cd loginbuddy`
+- `make build_all`  // please follow the README if you run into problems
+
+**Loginbuddy-Samples**
+
+- `git clone https://github.com/SaschaZeGerman/loginbuddy-samples.git`
+- `cd loginbuddy-samples`
+- `make build_all`  // please follow the README if you run into problems
+
+If you now run `docker images` in a terminal you should find these images:
+
+- saschazegerman/loginbuddy
+- saschazegerman/loginbuddy-sidecar
+- saschazegerman/loginbuddy-oidcdr
+- saschazegerman/loginbuddy-demoserver
+- saschazegerman/loginbuddy-democlient
+
+### Hosts for testing purposes
+
+All Loginbuddy projects use local hostnames rather than *localhost* to simulate real scenarios better.
 
 - Update the hosts file and add these entries (you may already have some of them configured)
     - *127.0.0.1 loginbuddy-sidecar loginbuddy-oidcdr local.loginbuddy.net democlient.loginbuddy.net demoserver.loginbuddy.net soapui.loginbuddy.net*
-- Launch SOAPUI and update these preferences:
-    - check *Preferences - HTTP Settings - Pre-Encoded Endpoints*
 
-The project depends on sources of Loginbuddy. Please clone it and build it:
+## Preparing tests
 
-- `git clone https://github.com/SaschaZeGerman/loginbuddy.git`
-- `make build_all`
+This project not only uses Loginbuddy docker images but it also builds one to add a helper service that generates JWT during test execution.
 
-This will build Loginbuddy and installs maven dependencies into your local repository.
+To get started follow these steps:
 
-## Run tests
+- `make build_all` // this will build test sources and creates the image **local/loginbuddy-test**
+
+This project holds four different SOAPUI projects and each one has a different purpose. To continue, launch SOAPUI:
+
+- Update these preferences: (this is required only once)
+  - check *File - Preferences - HTTP Settings - Pre-Encoded Endpoints*
+- Do a right-click on `Projects` in the left explorer window and load all four projects, one after another:
+  - {loginbuddy-test}/soapui/project/**loginbuddy-basic.xml**  //  appears as *A-Loginbuddy-Service*
+  - {loginbuddy-test}/soapui/project/**loginbuddy-configManagement.xml**  //  appears as *B-Loginbuddy-ConfigManagement*
+  - {loginbuddy-test}/soapui/project/**loginbuddy-flows.xml**  //  appears as *A-Loginbuddy-Flows*
+  - {loginbuddy-test}/soapui/project/**Loginbuddy-Sidecar.xml**  //  appears as *A-Loginbuddy-Sidecar*
+
+You are now ready to test Loginbuddy!
+
+## Running tests
+
+...
 
 Next to this file there are three directories:
 - **apitest/docker:** this contains docker related content to stand-up the testing environments
