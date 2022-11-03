@@ -41,7 +41,7 @@ services:
       - "SUPPORT_OIDCDR=true"
 
   loginbuddy-test:
-    image: saschazegerman/loginbuddy-test:latest
+    image: local/loginbuddy-test:latest
     restart: always
     ports:
       - "8003:8003"

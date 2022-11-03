@@ -10,16 +10,6 @@
 version: '3.4'
 services:
 
-  loginbuddy-oidcdr:
-    image: saschazegerman/loginbuddy-oidcdr:latest
-    restart: always
-    ports:
-      - "445:445"
-      - "8002:8002"
-      - "9012:9012"
-    environment:
-      - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=*:8002,suspend=n,server=y"
-
   loginbuddy:
     image: saschazegerman/loginbuddy:latest
     restart: always
@@ -39,18 +29,3 @@ services:
       - ./test-classes/net/loginbuddy/config/loginbuddy/CustomLoginbuddyConfigLoader.class:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/net/loginbuddy/config/loginbuddy/CustomLoginbuddyConfigLoader.class
     environment:
       - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=*:8000,suspend=n,server=y"
-
-  loginbuddy-sidecar:
-    image: saschazegerman/loginbuddy-sidecar:latest
-    restart: always
-    ports:
-      - "444:444"
-      - "8001:8001"
-      - "9011:9011"
-    volumes:
-      - ./config_sidecar.json:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/config.json
-      - ./discovery.json:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/discovery.json
-      - ./permissions_sidecar.policy:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/permissions.policy
-    environment:
-      - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=*:8001,suspend=n,server=y"
-      - "SUPPORT_OIDCDR=true"
