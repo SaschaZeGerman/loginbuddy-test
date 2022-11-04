@@ -123,4 +123,3 @@ At this point you ran all tests. The next, manual test (if you wish to do it) is
 
 - The SOAPUI project *C-Loginbuddy-Flows* has many duplicated test steps. This requires some effort to keep them in sync. When I get to it, I will do some refactoring
 - Not everything is automated, but running the test indicates a high chance that most features are working as expected
-- Manual verifications are required via the browser UI
