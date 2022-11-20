@@ -12,6 +12,7 @@ All Loginbuddy projects (including this one) use these tools and technologies:
 - Make
 - Maven
 - Java11
+- SOAPUI
 
 Before you continue, please verify that those tools are available!
 
@@ -85,9 +86,13 @@ You may run the same tests but this time with hazelcast as the session / cache i
   - run the same SOAPUI tests as above
 - `make stop-test-hazelcast`
 
+The next one simulates several authorization_code flows:
+
 - `make run-test-flows`  // launches a setup that simulates several OpenID Connect flows
   - In SOAPUI, double-click the project **C-Loginbuddy-Flows** and select the TestSuite menu. Click the green arrow and all tests are executed
 - `make stop-test-flows`
+
+The last one tests flows using the sidecar deployment:
 
 - `make run-test-sidecar`  // launches a setup that leverages the sidecar deployment
   - In SOAPUI, double-click the project **D-Loginbuddy-Sidecar** and select the TestSuite menu. Click the green arrow and all tests are executed
@@ -99,8 +104,8 @@ If, at any point, SOAPUI does not show a green success bar, something is off and
 
 The differences to 'real life' setups are these:
 - `loginbuddy-sidecar`: the compose file exposes all ports of this container. This is required to connect from outside the docker network (SOAPUI). Since loginbuddy-sidecar
-  would usually be launched with a container that leverages it, that container would be part of the same network and therefore could access it via port 444 without having to expose it!
-- `loginbuddy-oidcdr`: when this container launches it imports the SSL certificate of demoserver.loginbuddy.net. This is required because self-signed certificates are
+  would usually be launched in conjunction with a container that leverages it, that container would be part of the same network and therefore could access it via port 444 without having to expose it!
+- `loginbuddy-oidcdr`: when this container launches, it imports the SSL certificate of demoserver.loginbuddy.net. This is required because self-signed certificates are
   not accepted by default and tests would fail
 - `demoserver.loginbuddy.net`: when creating its DN for the self-signed certificate, it also includes 'loginbuddy-demoserver' as SAN name. This helps with DNS naming issues
   that arise from SOAPUI being outside of the docker network and the other containers being part of it
@@ -122,4 +127,4 @@ At this point you ran all tests. The next, manual test (if you wish to do it) is
 ## Known issues
 
 - The SOAPUI project *C-Loginbuddy-Flows* has many duplicated test steps. This requires some effort to keep them in sync. When I get to it, I will do some refactoring
-- Not everything is automated, but running the test indicates a high chance that most features are working as expected
+- Not everything is automated, but running the test indicates a high chance that most features work as expected
