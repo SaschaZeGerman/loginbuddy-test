@@ -35,7 +35,7 @@ public class CustomLoginbuddyConfigLoader implements LoginbuddyLoader {
     private String dbLocation, providerTemplateLocation;
 
     public CustomLoginbuddyConfigLoader() throws Exception {
-        // this file location is used with Loginbuddys api tests ({loginbuddy}/apitest/docker)
+        // this file location is used with Loginbuddys api tests ({loginbuddy-test}/docker-test/service)
         this(
                 "/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/testCustomLoginbuddyConfig.json",
                 "/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/configTemplates.json"

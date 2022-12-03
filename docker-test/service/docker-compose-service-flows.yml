@@ -10,6 +10,30 @@
 version: '3.4'
 services:
 
+  loginbuddy:
+    image: saschazegerman/loginbuddy:latest
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8000:8000"
+      - "9010:9010"
+    depends_on:
+      - loginbuddy-demoserver
+    volumes:
+      - ./config.json:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/config.json
+      - ./discovery.json:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/discovery.json
+      - ./permissions.policy:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/permissions.policy
+      - ./loginbuddy.properties:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/loginbuddy.properties
+      - ./testCustomLoginbuddyConfig.json:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/testCustomLoginbuddyConfig.json
+      - ./configTemplates.json:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/configTemplates.json
+      - ./server_loginbuddy.png:/usr/local/tomcat/webapps/ROOT/images/server_loginbuddy.png
+      - ./test-classes/net/loginbuddy/config/loginbuddy/CustomLoginbuddyConfigLoader.class:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/net/loginbuddy/config/loginbuddy/CustomLoginbuddyConfigLoader.class
+    environment:
+      - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=*:8000,suspend=n,server=y"
+      - "SUPPORT_OIDCDR=true"
+      - "SSL_TRUSTED_SERVER=demoserver:8443"
+
   loginbuddy-oidcdr:
     image: saschazegerman/loginbuddy-oidcdr:latest
     restart: always
@@ -20,25 +44,13 @@ services:
     environment:
       - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=*:8002,suspend=n,server=y"
 
-  loginbuddy-demo:
-    image: saschazegerman/loginbuddy-demo:latest
+  loginbuddy-demoserver:
+    image: saschazegerman/loginbuddy-demoserver:latest
+    container_name: demoserver
     restart: always
+    hostname: demoserver.loginbuddy.net
     ports:
-      - "80:80"
-      - "443:443"
-      - "8000:8000"
-      - "9010:9010"
-    volumes:
-      - ./config.json:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/config.json
-      - ./discovery.json:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/discovery.json
-      - ./permissions.policy:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/permissions.policy
-      - ./loginbuddy.properties:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/loginbuddy.properties
-      - ./testCustomLoginbuddyConfig.json:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/testCustomLoginbuddyConfig.json
-      - ./configTemplates.json:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/configTemplates.json
-      - ./test-classes/net/loginbuddy/config/loginbuddy/CustomLoginbuddyConfigLoader.class:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/net/loginbuddy/config/loginbuddy/CustomLoginbuddyConfigLoader.class
-    environment:
-      - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=*:8000,suspend=n,server=y"
-      - "SUPPORT_OIDCDR=true"
+      - "8443:8443"
 
   loginbuddy-test:
     image: local/loginbuddy-test:latest

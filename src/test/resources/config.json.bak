@@ -51,13 +51,13 @@
   "providers": [
     {
       "provider": "server_loginbuddy",
-      "issuer": "https://demoserver.loginbuddy.net",
+      "issuer": "https://demoserver.loginbuddy.net:8443:8443",
       "client_id": "loginbuddy_demoId",
       "client_secret": "loginbuddy_demoSecret",
-      "authorization_endpoint": "https://demoserver.loginbuddy.net/authorize",
-      "token_endpoint": "https://demoserver.loginbuddy.net/token",
-      "userinfo_endpoint": "https://demoserver.loginbuddy.net/userinfo",
-      "jwks_uri": "https://demoserver.loginbuddy.net/jwks",
+      "authorization_endpoint": "https://demoserver.loginbuddy.net:8443:8443/authorize",
+      "token_endpoint": "https://demoserver.loginbuddy.net:8443:8443/token",
+      "userinfo_endpoint": "https://demoserver.loginbuddy.net:8443/userinfo",
+      "jwks_uri": "https://demoserver.loginbuddy.net:8443/jwks",
       "scope": "openid profile email",
       "redirect_uri": "https://local.loginbuddy.net/callback",
       "response_mode": "query"

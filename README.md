@@ -36,13 +36,14 @@ The project depends on sources of Loginbuddy and Loginbuddy-Samples. Please clon
 - `cd loginbuddy-samples`
 - `make build_all`  // please follow the README if you run into problems
 
-If you now run `docker images` in a terminal you should find these images:
+If you now run `docker images | grep loginbuddy` in a terminal you should find these images:
 
 - saschazegerman/loginbuddy
 - saschazegerman/loginbuddy-sidecar
 - saschazegerman/loginbuddy-oidcdr
 - saschazegerman/loginbuddy-demoserver
 - saschazegerman/loginbuddy-democlient
+- saschazegerman/loginbuddy-base
 
 ### Hosts for testing purposes
 
