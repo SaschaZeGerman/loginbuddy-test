@@ -14,6 +14,7 @@ services:
   loginbuddy-demoserver:
     image: saschazegerman/loginbuddy-demoserver:latest
     restart: always
+    hostname: demoserver.loginbuddy.net
     ports:
     - "443:443"
     - "8003:8003"
@@ -30,11 +31,12 @@ services:
       - loginbuddy-demoserver
     ports:
       - "8002:8002"
-    volumes:
-      - ./loginbuddy_oidcdr_test.sh:/opt/docker/loginbuddy.sh
-      - ./loginbuddy_demoserver_import.sh:/opt/docker/loginbuddy_demoserver_import.sh
+#    volumes:
+#      - ./loginbuddy_oidcdr_test.sh:/opt/docker/loginbuddy.sh
+#      - ./loginbuddy_demoserver_import.sh:/opt/docker/loginbuddy_demoserver_import.sh
     environment:
       - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=*:8002,suspend=n,server=y"
+      - "SSL_TRUSTED_SERVER=loginbuddy-demoserver:443"
 #      - "HAZELCAST=hazelcast1:5701,hazelcast2:5701"
 
   loginbuddy-sidecar:

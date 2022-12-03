@@ -10,5 +10,4 @@ grant codeBase "file:${catalina.home}/webapps/ROOT/-" {
     permission java.net.SocketPermission "loginbuddy-oidcdr", "connect,resolve";
     permission java.net.SocketPermission "hazelcast1", "connect,resolve";
     permission java.net.SocketPermission "hazelcast2", "connect,resolve";
-    permission java.lang.RuntimePermission "getenv.HAZELCAST";
 };
