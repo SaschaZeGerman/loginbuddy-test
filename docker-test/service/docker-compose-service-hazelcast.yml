@@ -12,6 +12,7 @@ services:
 
   loginbuddy:
     image: saschazegerman/loginbuddy:latest
+    container_name: loginbuddy
     restart: always
     ports:
       - "80:80"
@@ -33,12 +34,14 @@ services:
 
   hazelcast1:
     image: hazelcast/hazelcast
+    container_name: hazelcast1
     restart: always
     environment:
       - "JAVA_OPTS=-Dhazelcast:local:publicAddress=hazelcast1:5701"
 
   hazelcast2:
     image: hazelcast/hazelcast
+    container_name: hazelcast2
     restart: always
     environment:
       - "JAVA_OPTS=-Dhazelcast:local:publicAddress=hazelcast2:5701"

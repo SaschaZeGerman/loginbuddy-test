@@ -29,12 +29,14 @@ The project depends on sources of Loginbuddy and Loginbuddy-Samples. Please clon
 - `git clone https://github.com/SaschaZeGerman/loginbuddy.git`
 - `cd loginbuddy`
 - `make build_all`  // please follow the README if you run into problems
+- `cd ..`
 
 **Loginbuddy-Samples**
 
 - `git clone https://github.com/SaschaZeGerman/loginbuddy-samples.git`
 - `cd loginbuddy-samples`
 - `make build_all`  // please follow the README if you run into problems
+- `cd ..`
 
 If you now run `docker images | grep loginbuddy` in a terminal you should find these images:
 

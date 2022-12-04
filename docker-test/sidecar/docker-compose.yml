@@ -13,6 +13,7 @@ services:
 
   loginbuddy-demoserver:
     image: saschazegerman/loginbuddy-demoserver:latest
+    container_name: demoserver
     restart: always
     hostname: demoserver.loginbuddy.net
     ports:
@@ -26,6 +27,7 @@ services:
 
   loginbuddy-oidcdr:
     image: saschazegerman/loginbuddy-oidcdr:latest
+    container_name: loginbuddy-oidcdr
     restart: always
     depends_on:
       - loginbuddy-demoserver
@@ -37,6 +39,7 @@ services:
 
   loginbuddy-sidecar:
     image: saschazegerman/loginbuddy-sidecar:latest
+    container_name: loginbuddy-sidecar
     restart: always
     depends_on:
       - loginbuddy-oidcdr

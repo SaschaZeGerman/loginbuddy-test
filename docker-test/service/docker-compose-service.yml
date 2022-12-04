@@ -12,6 +12,7 @@ services:
 
   loginbuddy:
     image: saschazegerman/loginbuddy:latest
+    container_name: loginbuddy
     restart: always
     ports:
       - "80:80"
