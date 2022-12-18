@@ -17,12 +17,12 @@ services:
     restart: always
     hostname: demoserver.loginbuddy.net
     ports:
-    - "443:443"
+    - "8443:8443"
     - "8003:8003"
     environment:
-      - "DEMOSERVER_LOCATION=https://loginbuddy-demoserver"
-      - "DEMOSERVER_HOSTNAME=loginbuddy-demoserver"
-      - "DEMOSERVER_SSL_PORT=443"
+      - "DEMOSERVER_LOCATION=https://demoserver.loginbuddy.net:8443"
+      - "DEMOSERVER_HOSTNAME=demoserver.loginbuddy.net"
+      - "DEMOSERVER_SSL_PORT=8443"
       - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=*:8003,suspend=n,server=y"
 
   loginbuddy-oidcdr:
@@ -35,7 +35,7 @@ services:
       - "8002:8002"
     environment:
       - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=*:8002,suspend=n,server=y"
-      - "SSL_TRUSTED_SERVER=loginbuddy-demoserver:443"
+      - "SSL_TRUSTED_SERVER=loginbuddy-demoserver:8443"
 
   loginbuddy-sidecar:
     image: saschazegerman/loginbuddy-sidecar:latest
@@ -64,3 +64,4 @@ services:
         -Dcom.sun.management.jmxremote.rmi.port=9012 \
         -Dcom.sun.management.jmxremote.local.only=false"
       - "SUPPORT_OIDCDR=true"
+      - "SSL_TRUSTED_SERVER=loginbuddy-demoserver:8443"

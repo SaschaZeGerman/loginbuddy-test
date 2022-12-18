@@ -11,7 +11,7 @@
       "token_endpoint": "https://demoserver.loginbuddy.net:8443/token",
       "userinfo_endpoint": "https://demoserver.loginbuddy.net:8443/userinfo",
       "jwks_uri": "https://demoserver.loginbuddy.net:8443/jwks",
-      "scope": "server_scope",
+      "scope": "server_scope openid email profile",
       "redirect_uri": "https://local.loginbuddy.net/callback"
     },
     {
