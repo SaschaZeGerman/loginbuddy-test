@@ -31,6 +31,7 @@ services:
     environment:
       - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=*:8000,suspend=n,server=y"
       - "HAZELCAST=hazelcast1:5701,hazelcast2:5701"
+      - "STORAGE=HAZELCAST[hazelcast1:5701,hazelcast2:5701]"
 
   hazelcast1:
     image: hazelcast/hazelcast
