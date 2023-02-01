@@ -53,6 +53,9 @@ services:
     hostname: demoserver.loginbuddy.net
     ports:
       - "8443:8443"
+      - "8010:8010"
+    environment:
+      - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=*:8010,suspend=n,server=y"
 
   loginbuddy-test:
     image: local/loginbuddy-test:latest

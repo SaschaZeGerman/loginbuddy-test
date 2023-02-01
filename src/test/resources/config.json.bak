@@ -63,6 +63,15 @@
       "response_mode": "query"
     },
     {
+      "provider": "server_loginbuddy_par",
+      "issuer": "https://demoserver.loginbuddy.net:8443",
+      "openid_configuration_uri": "https://demoserver.loginbuddy.net:8443/.well-known/openid-configuration",
+      "client_id": "loginbuddy_demoIdPar",
+      "client_secret": "loginbuddy_demoSecretPar",
+      "scope": "openid profile email",
+      "redirect_uri": "https://local.loginbuddy.net/callback"
+    },
+    {
       "provider": "not_for_public_client",
       "issuer": "https://not_for_public_client/server",
       "client_id": "not_for_public_client",
