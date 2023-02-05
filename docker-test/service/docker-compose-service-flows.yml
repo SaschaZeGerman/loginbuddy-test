@@ -45,6 +45,7 @@ services:
       - "9012:9012"
     environment:
       - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=*:8002,suspend=n,server=y"
+      - "SSL_TRUSTED_SERVER=demoserver:8443"
 
   loginbuddy-demoserver:
     image: saschazegerman/loginbuddy-demoserver:latest
