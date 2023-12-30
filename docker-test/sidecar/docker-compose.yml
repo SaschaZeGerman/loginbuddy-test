@@ -38,7 +38,7 @@ services:
       - "SSL_TRUSTED_SERVER=loginbuddy-demoserver:8443"
 
   loginbuddy-sidecar:
-    image: saschazegerman/loginbuddy-sidecar:latest
+    image: saschazegerman/loginbuddy:latest
     container_name: loginbuddy-sidecar
     restart: always
     depends_on:
