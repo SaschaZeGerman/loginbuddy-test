@@ -41,7 +41,6 @@ The project depends on sources of Loginbuddy and Loginbuddy-Samples. Please clon
 If you now run `docker images | grep loginbuddy` in a terminal you should find these images:
 
 - saschazegerman/loginbuddy
-- saschazegerman/loginbuddy-sidecar
 - saschazegerman/loginbuddy-oidcdr
 - saschazegerman/loginbuddy-demoserver
 - saschazegerman/loginbuddy-democlient
