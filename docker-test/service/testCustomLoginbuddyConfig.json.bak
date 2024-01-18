@@ -68,7 +68,8 @@
       "jwks_uri": "https://demoserver.loginbuddy.net:8443/jwks",
       "scope": "openid profile email",
       "redirect_uri": "https://local.loginbuddy.net/callback",
-      "response_mode": "query"
+      "response_mode": "query",
+      "dpop_signing_alg": "ES256"
     },
     {
       "provider": "server_loginbuddy_par",
@@ -77,7 +78,8 @@
       "client_id": "loginbuddy_demoIdPar",
       "client_secret": "loginbuddy_demoSecretPar",
       "scope": "openid profile email",
-      "redirect_uri": "https://local.loginbuddy.net/callback"
+      "redirect_uri": "https://local.loginbuddy.net/callback",
+      "dpop_signing_alg": "ES256"
     },
     {
       "provider": "not_for_public_client",
