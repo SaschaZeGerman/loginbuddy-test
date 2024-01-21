@@ -1,6 +1,6 @@
 package net.loginbuddy.config.loginbuddy;
 
-import net.loginbuddy.config.loginbuddy.common.Meta;
+import net.loginbuddy.common.config.Meta;
 import org.junit.Before;
 import org.junit.Test;
 
